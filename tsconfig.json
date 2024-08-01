@@ -10,23 +10,6 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@Modules/*": [
-        "./src/modules/*"
-      ],
-      "@Modules": [
-        "./src/modules/index.ts"
-      ],
-      "@Entities/*": [
-        "src/models/*"
-      ],
-      "@Entities": [
-        "src/models/index"
-      ],
-    },
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,

@@ -29,7 +29,6 @@
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/typeorm": "^10.0.2",
-    "module-alias": "^2.2.3",
     "pg": "^8.12.0",
     "reflect-metadata": "^0.2.0",
     "release-it": "^17.6.0",
@@ -88,9 +87,5 @@
   },
   "release-it": {
     "$schema": "https://unpkg.com/release-it/schema/release-it.json"
-  },
-  "_moduleAliases": {
-    "@Entities": "dist/models",
-    "@Modules": "dist/modules"
   }
 }
