@@ -1,1 +1,1 @@
-export * from './examination'
+export * from './Examination'
