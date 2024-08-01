@@ -20,12 +20,6 @@
       "@Modules": [
         "./src/modules/index.ts"
       ],
-      "@App/*": [
-        "./src/app/*"
-      ],
-      "@App": [
-        "./src/app/index"
-      ],
       "@Entities/*": [
         "src/models/*"
       ],
