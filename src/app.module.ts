@@ -19,7 +19,6 @@ import { Examination } from '@Entities';
       username: process.env.NI_DB_USERNAME,
       password: process.env.NI_DB_PASS,
       entities: [Examination],
-      synchronize: true, // should disable in prod
     }),
   ],
   controllers: [AppController],

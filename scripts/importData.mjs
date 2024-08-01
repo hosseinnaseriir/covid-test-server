@@ -13,7 +13,6 @@ const AppDataSource = new DataSource({
     username: process.env.NI_DB_USERNAME,
     password: process.env.NI_DB_PASS,
     entities: [Examination],
-    synchronize: true, // Synchronize schema with the database, use with caution in production
 });
 
 
