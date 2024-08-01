@@ -3,7 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { Examination } from './models';
+import { Examination, User } from './models';
+import { AuthModule } from './modules/authentication';
 
 @Module({
   imports: [
@@ -18,8 +19,10 @@ import { Examination } from './models';
       port: +process.env.NI_DB_PORT,
       username: process.env.NI_DB_USERNAME,
       password: process.env.NI_DB_PASS,
-      entities: [Examination],
+      entities: [Examination, User],
+      synchronize: true, // should disable in prod
     }),
+    AuthModule
   ],
   controllers: [AppController],
   providers: [
