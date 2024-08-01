@@ -3,7 +3,7 @@ import { BadRequestException, HttpException, HttpStatus, Injectable } from '@nes
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 @Injectable()
 export class AuthService {
     constructor(
@@ -33,7 +33,6 @@ export class AuthService {
         if (!user) {
             throw new HttpException('Invalid credentials', HttpStatus.UNAUTHORIZED);
         }
-
         const isMatch: boolean = await bcrypt.compare(loginPayload.password, user.password)
         if (!isMatch) {
             throw new BadRequestException('Password does not match');
