@@ -8,9 +8,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtStrategy } from './jwt.strategy';
 import { APP_GUARD } from '@nestjs/core';
 import { LocalStrategy } from './local.strategy';
-import { UserJwtGuard } from 'src/guards';
+import { UserJwtGuard } from '../../guards';
 import { PassportModule } from '@nestjs/passport';
-import { User } from 'src/models';
+import { User } from '../../models';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User]),

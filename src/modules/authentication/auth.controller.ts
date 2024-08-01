@@ -3,8 +3,8 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from '@nestjs/passport';
-import { LoginPayload, RegisterPayload } from 'src/models';
-import { Public } from 'src/decorators';
+import { LoginPayload, RegisterPayload } from '../../models';
+import { Public } from '../../decorators';
 
 
 @Controller('auth')
