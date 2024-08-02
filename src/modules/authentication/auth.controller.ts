@@ -1,17 +1,18 @@
 import {
-    Body, Controller, HttpCode, HttpException, HttpStatus, Post, UseGuards
+    Body, Controller, HttpCode, HttpException, HttpStatus, Post, UseGuards,
+    Version
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from '@nestjs/passport';
 import { LoginPayload, RegisterPayload } from '../../models';
 import { Public } from '../../decorators';
 
-
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService) { }
 
     @Public()
+    @Version('1')
     @Post("/register")
     @HttpCode(HttpStatus.CREATED)
     async register(@Body() registerPayload: RegisterPayload) {
@@ -24,6 +25,7 @@ export class AuthController {
     }
 
     @Public()
+    @Version('1')
     @Post("/validate")
     @UseGuards(AuthGuard('local'))
     @HttpCode(HttpStatus.OK)
