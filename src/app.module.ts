@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { Examination, User } from './models';
 import { AuthModule } from './modules/authentication';
+import { ExaminationsModule } from './modules/examinations/examinations.module';
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { AuthModule } from './modules/authentication';
       entities: [Examination, User],
       synchronize: true, // should disable in prod
     }),
-    AuthModule
+    AuthModule,
+    ExaminationsModule
   ],
   controllers: [AppController],
   providers: [
