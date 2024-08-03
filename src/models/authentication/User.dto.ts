@@ -7,6 +7,7 @@ const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]
 export class LoginPayload {
     @IsNotEmpty()
     @IsString()
+    @Length(3, 50)
     username: string;
 
     @IsNotEmpty()
