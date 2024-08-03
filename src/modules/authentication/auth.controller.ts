@@ -1,5 +1,5 @@
 import {
-    Body, Controller, HttpCode, HttpException, HttpStatus, Post, UseGuards,
+    Body, Controller, Get, HttpCode, HttpException, HttpStatus, Post, Req, UseGuards,
     Version
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
@@ -38,5 +38,18 @@ export class AuthController {
             throw new HttpException(ex.message, HttpStatus.UNAUTHORIZED);
         }
     }
+
+    @Version('1')
+    @Get('me')
+    async getMe(@Req() req) {
+        try {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const { password, ...user } = await this.authService.getUserFromToken(req.headers.authorization.split(' ')[1]);
+            return { user };
+        } catch (ex) {
+            throw new HttpException(ex.message, HttpStatus.UNAUTHORIZED);
+        }
+    }
+
 
 }
