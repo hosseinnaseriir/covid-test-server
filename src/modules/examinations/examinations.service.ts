@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Examination } from '../../models';
 import { Repository } from 'typeorm';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class ExaminationsService {
@@ -77,6 +78,7 @@ export class ExaminationsService {
             .getRawMany();
 
         return rawData.map(data => ({
+            id: uuidv4(),
             locationId: Number(data.examination_locationId),
             pending: Number(data.pending),
             negative: Number(data.negative),
