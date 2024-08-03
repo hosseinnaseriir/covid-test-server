@@ -24,7 +24,7 @@ export class ExaminationsController {
     }
 
     @Public()
-    @Get('/:locationId')
+    @Get('/find/:locationId')
     @Version('1')
     async getExaminationsByLocationId(
         @Param('locationId') locationId: number,
