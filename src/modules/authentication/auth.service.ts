@@ -4,6 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
+
 @Injectable()
 export class AuthService {
     constructor(
@@ -43,5 +44,14 @@ export class AuthService {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async generateJwtToken({ password, ...user }: User) {
         return this.jwtService.sign({ ...user });
+    }
+
+    async getUserFromToken(token: string): Promise<User> {
+        const decoded = this.jwtService.verify(token);
+        const user = await this.usersRepository.findOneBy({ id: decoded.id });
+        if (!user) {
+            throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+        }
+        return user;
     }
 }
